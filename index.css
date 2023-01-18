@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+
+
+:root{
+    font-size: 1.25vw; /* at 1920, it is 24px */
+}
+
+body{
+    background-color: var(--bauyellow);
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    line-height: 1.2;
+}
+.big-headline{
+    font-size: 3rem;
+    margin: 0;
+}
+.medium-headline{
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.small-headline{
+    font-size: 2rem;
+    margin: 0;
+}
+p{
+    font-size: 1.25rem;
+    margin: 0;
+}
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.testing{
+    height: 30rem;
+    flex-direction: column;
+}
