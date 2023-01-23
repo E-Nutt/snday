@@ -1,3 +1,6 @@
+/* toDo : 
+- general reset: box sizing, margin 
+ */
 *{
     box-sizing: border-box;
 }
@@ -5,10 +8,11 @@
 
 :root{
     font-size: 1.25vw; /* at 1920, it is 24px */
+    --sndayGreen: #205E29;
+    --sndayBeige: #fcf6ef;
 }
 
 body{
-    background-color: var(--bauyellow);
     padding: 0;
     margin: 0;
     height: 100%;
@@ -40,4 +44,10 @@ p{
 .testing{
     height: 30rem;
     flex-direction: column;
+    background: var(--sndayBeige);
+}
+.coba-warna{
+    height: 10rem;
+    width: 10rem;
+    
 }
