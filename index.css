@@ -6,6 +6,7 @@
 
 :root{
     /* COLOR */
+    --snday-green:rgb(53, 87, 73);
 
     /* FONT-SIZE MOBILE*/
     --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
@@ -22,7 +23,7 @@
     --ff-roboto : "Roboto", sans-serif;
 }
 
-@media (min-width: 35rem) {
+@media (min-width: 40.6rem) {
     :root {
         --fs-800: 5rem;
         --fs-700: 2.5rem;
@@ -38,7 +39,7 @@
         --fs-800: 6.25rem;
         --fs-700: 3.5rem;
         --fs-600: 2.5rem;
-        --fs-500: 2rem;
+        --fs-500: 1.9rem;
         --fs-400: 1.125rem;
     }
 }
@@ -64,6 +65,7 @@ body, h1,h2,h3,h4,h5,h6,p,picture,figure {
 body{
     line-height: 1.5;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /*           SET UP - IMAGE           */
@@ -85,7 +87,17 @@ img, picture{
         max-width: 80%;
     }
 }
-
+a{
+    text-decoration: none;
+    color: black;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
 /*       SET UP - FORM-ELEMENT        */
 
 select, input, textarea, button{font: inherit;}
@@ -128,28 +140,34 @@ select, input, textarea, button{font: inherit;}
     margin-inline: auto;
     max-width: 90rem;
 }
-.centered-hor{
+.centered-ver{
     justify-content: center;
 }
-.centered-ver{
+.centered-hor{
     align-items: center;
 }
 .space-evenly{
     justify-content: space-evenly;
 }
+.clr-white{
+    color: white;
+}
+.sr-only {
+    position: absolute; 
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px; 
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+  }
 @media (min-width: 40.6rem){
     .column-half{
         width: 50%;
     }
 }
-
-
-/* COLORS */
-
-/* .bg-dark { background-color: hsl( var(--clr-dark) );}
-.bg-accent { background-color: hsl( var(--clr-light) );}
-.bg-white { background-color: hsl( var(--clr-white) );} */
-
 
 /* TYPOGRAPHY */
 
@@ -203,7 +221,7 @@ select, input, textarea, button{font: inherit;}
     margin-left: 1.25rem;
 }
 .big-spacing{
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 @media (min-width: 40.6rem) {
     .flow-ver > *:not(:first-child) {
@@ -238,29 +256,108 @@ select, input, textarea, button{font: inherit;}
 /*       NAVIGATION       */
 
 .primary-navigation {
-    --underline-gap: 2rem;
-    list-style: none;
-    padding: 0;
+    padding-inline: 2rem;
     margin: 0;
 }
-.primary-navigation a {
-    text-decoration: none;
+
+.mobile-nav-toggle{
+    display: none;
 }
 
+@media (max-width: 42rem){
+    .primary-navigation{
+        background-color: white;
+        backdrop-filter: blur(1rem);
+        z-index: 1000;
+        inset: 0 40% 0 0;
+        position: fixed;
+        flex-direction: column;
+        transform: translateX(-100%);
+        transition: transform 500ms ease-in-out;
+    }
+    .primary-navigation[data-visible="true"]{
+        transform: translateX(0);
+    }
+    .mobile-nav-toggle{
+        display: block;
+        position: fixed;
+        z-index: 2000;
+        left: 1rem;
+        top: 1rem;
+        background: transparent;
+        background-image: url("assets/hamburger.png");
+        background-size: cover;
+        width: 1.5rem;
+        aspect-ratio: 1;
+        border: 0;
+        transition: transform 300ms ease-in-out;
+    }
+    .mobile-nav-toggle[aria-expanded="true"]{
+        width: 1.25rem;
+        transform: rotate(90deg);
+        background-image: url("assets/close.png");
+    }
+}
+
+/*       FOOTER       */
+.footer-snday{
+    background-color: var(--snday-green);
+    flex-direction: column;
+    height:25vh;
+    padding-inline: 2rem;
+}
+.footer-snday > div{
+    width: 100%;
+    flex-direction: column;
+    --gap:0;
+}
+.footer-snday-list{
+    flex-direction: row;
+    width: 100%;
+}
+.footer-link{
+    color: white;
+}
+.footer-snday :nth-child(4){
+    display: none;
+}
+@media (max-width: 35rem){
+  
+}
 /*       LANDING PAGE       */
-
-
+.body > :first-child{
+    margin-top: 3rem;
+}
+.landing-page-text-container{
+    display: flex;
+    flex-direction: column;
+}
+.landing-page-text-container > :first-child{
+    margin-bottom: 1rem;
+}
 @media (min-width: 40.6rem) {
     .landing-page {
         flex-wrap: nowrap;
-        --gap:3rem
+        --gap:3rem;
+        align-items: center;
+        margin-top: 3rem;
+    }
+    .landing-page-text-container > :first-child{
+        margin-bottom: 2rem;
     }
 }
 
 @media (min-width: 60rem) {
     .landing-page{
         flex-wrap: nowrap;
-        --gap:5rem
+        --gap:5rem;
+        margin-top: 5rem;
+    }
+    .landing-page-text-container{
+        align-items: center;
+    }
+    .landing-page-text-container > :first-child{
+        margin-bottom: 3rem;
     }
 }
 
@@ -327,7 +424,7 @@ select, input, textarea, button{font: inherit;}
 /*       OUR-STORY       */
 
 .story-pic{
-    width: 100%;
+    width: 90%;
     height: 20rem;
     background-image: url("assets/snday-coffee.png");
     background-size: cover;
@@ -338,20 +435,11 @@ select, input, textarea, button{font: inherit;}
 }
 .story-text{
     flex-direction: column;
-    align-self: center;
-    justify-self: right;
 }
 @media (min-width: 40.6rem){
-    .story-container{
-        flex-direction: column;
-        --gap:2rem;
-    }
     .story-pic{
-        width: 100%;
+        max-width: 60%;
         height: 33rem;
-    }
-    .story-text{
-        width: 100%;
     }
 }
 @media (min-width: 60rem){
@@ -377,7 +465,100 @@ select, input, textarea, button{font: inherit;}
 .collaboration > p{
     max-width: 100%;
 }
+.collaboration-pic-container{
+    flex-wrap: wrap;
+}
+.collaboration-pic{
+    width: 80%;
+    height: 23rem;
+}
+.collaboration-pic-container :nth-child(1){
+    background-image: url("assets/traditional-mojito-with-ice-mint-table.jpg");
+    background-size: cover;
+    background-position: center center;
+}
+.collaboration-pic-container :nth-child(2){
+    background-image: url("assets/traditional-mojito-with-ice-mint-table.jpg");
+    background-size: cover;
+    background-position: center center;
+}
+.collaboration-pic-container :nth-child(3){
+    background-image: url("assets/traditional-mojito-with-ice-mint-table.jpg");
+    background-size: cover;
+    background-position: center center;
+}
 
+@media (min-width: 40.6rem){
+    .collaboration-pic-container{
+        flex-wrap: nowrap;
+        justify-content: center;
+        --gap:2rem
+    }
+    .collaboration-pic{
+        max-width: 30%;
+        height: 20rem;
+    }
+}
+@media (min-width: 60rem){
+    .collaboration-pic{
+        width: 20%;
+    }
+}
+
+/*       BARISTA-CAREER       */
+
+.barista-career-container{
+    flex-direction: column;
+}
+.barista-career-card{
+    flex-direction: column;
+    background-color: var(--snday-green);
+    width: 100%;
+    height: 39rem;
+    padding: 2rem;
+}
+.barista-pic{
+    background-image: url("assets/smiling-asian-barista-girl-giving-takeaway-coffee-cup-prepare-takeout-order-guest-cafe-wearing.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 20rem;
+    background-position: top center;
+
+}
+.career-pic{
+    background-image: url("assets/small-business-coffee-shop-cafe-restaurants-concept-handsome-smiling-barista-waiter-black-apr.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 20rem;
+    background-position: top center;
+
+}
+
+@media (min-width: 40.6rem){
+    .barista-career-container{
+        align-items: center;
+    }
+    .barista-career-card{
+        width: 85%;
+    }
+}
+@media (min-width: 60rem){
+    .barista-career-container{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .barista-career-card{
+        height: 45rem;
+        width: 40%;
+    }
+    .barista-career-card > p,h4{
+        max-width: 100%;
+        height: min-content;
+    }
+    .barista-career-card > a{
+        align-self: last baseline;
+    }
+}
 
 /* *{
     box-sizing: border-box;
