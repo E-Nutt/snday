@@ -10,11 +10,13 @@ navToggle.addEventListener("click", ()=>{
      if(visiblity === "false"){
         nav.setAttribute("data-visible", true);
         navToggle.setAttribute("aria-expanded", true);
+        navToggle.style.transform = "rotate(90deg)";
+        navToggle.style.transition = "transform 300ms"
      } else{
         nav.setAttribute("data-visible", false);
         navToggle.setAttribute("aria-expanded", false);
+        navToggle.style.transform = "rotate(0deg)";
      }
-     console.log(navToggle.getAttribute("aria-expanded"));
 })
 
 /*----------------------------*/
@@ -22,7 +24,7 @@ navToggle.addEventListener("click", ()=>{
 /*----------------------------*/
 
 function hide(elem) { 
-    gsap.set(elem, {autoAlpha: 0,ease:"power2"}); //set the opacity to 0
+    gsap.set(elem, {autoAlpha: 0}); //set the opacity to 0
   }
   
 /* REVEAL-HORIZONTAL*/
@@ -126,6 +128,7 @@ mm.add("(max-width: 41.9rem)", () => {
         paused: true,
         duration: 0.2
       }).progress(1);
+
       ScrollTrigger.create({ //create GSAP object to animate the navbar when the page scrolled up
         start: "top top",
         end: 99999,
@@ -133,6 +136,22 @@ mm.add("(max-width: 41.9rem)", () => {
           self.direction === -1 ? showAnim.play() : showAnim.reverse()
         }
       });
+
+      ScrollTrigger.create({
+        trigger: ".collaboration-title",
+        start: "top 0",
+        end: "+=1300px",
+        pin: ".collaboration-title",
+      });
+
+   /*    gsap.to(".collaboration-title",{
+        ScrollTrigger: {
+            trigger: ".collaboration-title",
+            start: "top top",
+            end: "bottom bottom",
+           
+        },
+      }); */
 });
 
 
