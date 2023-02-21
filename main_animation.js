@@ -137,21 +137,32 @@ mm.add("(max-width: 41.9rem)", () => {
         }
       });
 
+/*       var collabTitle = document.querySelector("#collaboration-title");
+      var collabText = document.querySelector("#collaboration-subtitle"); */
+
+      function changeText(title, text){
+       document.getElementById("collaboration-title").innerHTML = title;
+       document.getElementById("collaboration-subtitle").innerHTML = text;
+      }
+
       ScrollTrigger.create({
         trigger: ".collaboration-title",
         start: "top 0",
         end: "+=1300px",
         pin: ".collaboration-title",
       });
-
-   /*    gsap.to(".collaboration-title",{
-        ScrollTrigger: {
-            trigger: ".collaboration-title",
-            start: "top top",
-            end: "bottom bottom",
-           
-        },
-      }); */
+      
+      function collaborationPic(title, text){
+      gsap.utils.toArray(".collaboration-pic").forEach(elem => {
+        ScrollTrigger.create({
+            trigger:elem,
+            onEnter: function(){changeText(title, text)},
+            onLeaveBack: function(){changeText("Special Collaboration", "A fusion of Characteristic, style and taste from other brand local and international")}
+        })
+      })
+    }
+    collaborationPic("seremoni", "we did collaboration with seremoni");
+    collaborationPic("lumberjack", "we did collaboration with lumberjack");
 });
 
 
