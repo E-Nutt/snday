@@ -55,9 +55,9 @@ function hide(elem) {
       y = 0;
     }
   
-    elem.style.transform = "translate(" + x + "px, " + y + "px)"; //set the initial position of the elements
-    elem.style.opacity = "0"; //set the initial opacity of the elements
-    gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, { //adding the animation to the element
+/*     elem.style.transform = "translate(" + x + "px, " + y + "px)";
+    elem.style.opacity = "0";  */
+    gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, { 
       duration: 1.25,
       x: 0,
       y: 0,
@@ -95,8 +95,8 @@ function hide(elem) {
       y = 100;
     }
   
-    elem.style.transform = "translate(" + x + "px, " + y + "px)"; //set the initial position of the elements
-    elem.style.opacity = "0"; //set the initial opacity of the elements
+/*     elem.style.transform = "translate(" + x + "px, " + y + "px)"; 
+    elem.style.opacity = "0"; */
     gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, { //adding the animation to the element
       duration: 1.25,
       x: 0,
