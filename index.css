@@ -175,10 +175,6 @@ select, input, textarea, button{font: inherit;}
 .ff-jost{font-family: var(--ff-jost);}
 .ff-roboto{font-family: var(--ff-roboto);}
 
-.letter-spacing-1 { letter-spacing: 4.75px; } 
-.letter-spacing-2 { letter-spacing: 2.7px; } 
-.letter-spacing-3 { letter-spacing: 2.35px; } 
-
 .uppercase { text-transform: uppercase; }
 
 .fs-900 { font-size: var(--fs-900); }
@@ -196,10 +192,7 @@ select, input, textarea, button{font: inherit;}
 .fw-500 {font-weight: 500;}
 .fw-600 {font-weight: 600;}
 
-.fs-900,
-.fs-800,
-.fs-700,
-.fs-600 {
+.fs-900, .fs-800, .fs-700, .fs-600 {
     line-height: 1.1;
 }
 .text-centered{
@@ -259,6 +252,11 @@ select, input, textarea, button{font: inherit;}
 .primary-navigation {
     padding-inline: 2rem;
     margin: 0;
+    position: fixed;
+    width: 100%;
+    top: 0rem;
+    background-color: white;
+    z-index: 10000;
 }
 
 .mobile-nav-toggle{
@@ -269,9 +267,9 @@ select, input, textarea, button{font: inherit;}
     .primary-navigation{
         background-color: white;
         backdrop-filter: blur(1rem);
-        z-index: 1000;
+        z-index: 100000;
+        width: auto;
         inset: 0 40% 0 0;
-        position: fixed;
         flex-direction: column;
         transform: translateX(-100%);
         transition: transform 500ms ease-in-out;
@@ -282,7 +280,7 @@ select, input, textarea, button{font: inherit;}
     .mobile-nav-toggle{
         display: block;
         position: fixed;
-        z-index: 2000;
+        z-index: 200000;
         left: 1rem;
         top: 1rem;
         background: transparent;
@@ -295,6 +293,7 @@ select, input, textarea, button{font: inherit;}
     .mobile-nav-toggle[aria-expanded="true"]{
         background-image: url("assets/close.png");
         width: 1.25rem;
+        z-index: 200000;
     }
 }
 
@@ -324,9 +323,6 @@ select, input, textarea, button{font: inherit;}
   
 }
 /*       LANDING PAGE       */
-.body > :first-child{
-    margin-top: 3rem;
-}
 .landing-page-text-container{
     display: flex;
     flex-direction: column;
@@ -339,7 +335,7 @@ select, input, textarea, button{font: inherit;}
         flex-wrap: nowrap;
         --gap:3rem;
         align-items: center;
-        margin-top: 3rem;
+        margin-top: 8rem;
     }
     .landing-page-text-container > :first-child{
         margin-bottom: 2rem;
@@ -350,7 +346,7 @@ select, input, textarea, button{font: inherit;}
     .landing-page{
         flex-wrap: nowrap;
         --gap:5rem;
-        margin-top: 5rem;
+        margin-top: 11rem;
     }
     .landing-page-text-container{
         align-items: center;
@@ -466,6 +462,7 @@ select, input, textarea, button{font: inherit;}
 }
 .collaboration-pic-container{
     flex-wrap: wrap;
+    overflow: hidden;
 }
 .collaboration-pic{
     width: 80%;

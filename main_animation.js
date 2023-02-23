@@ -137,32 +137,83 @@ mm.add("(max-width: 41.9rem)", () => {
         }
       });
 
-/*       var collabTitle = document.querySelector("#collaboration-title");
-      var collabText = document.querySelector("#collaboration-subtitle"); */
+/* COLLABORATION-ANIMATION-MOBILE */
 
-      function changeText(title, text){
+      function changeTextCollaboration(title, text){
        document.getElementById("collaboration-title").innerHTML = title;
        document.getElementById("collaboration-subtitle").innerHTML = text;
       }
-
+      function resetTextCollaboration(){
+        document.getElementById("collaboration-title").innerHTML = "Special Collaboration";
+        document.getElementById("collaboration-subtitle").innerHTML = "A fusion of Characteristic, style and taste from other brand local and international";
+      }
       ScrollTrigger.create({
         trigger: ".collaboration-title",
         start: "top 0",
         end: "+=1300px",
         pin: ".collaboration-title",
+      }); 
+      const collabPic1 = document.querySelector("#collab-pic1");
+      const collabPic2 = document.querySelector("#collab-pic2");
+      const collabPic3 = document.querySelector("#collab-pic3");
+
+      ScrollTrigger.create({
+        trigger: collabPic1,
+        start:"top 30%",
+        end: () => "+=" + collabPic1.offsetWidth,
+        onEnter: function(){changeTextCollaboration("Seremoni", "We did Collaboration with Seremoni")},
+        onLeaveBack: function(){resetTextCollaboration()}
       });
-      
-      function collaborationPic(title, text){
-      gsap.utils.toArray(".collaboration-pic").forEach(elem => {
-        ScrollTrigger.create({
-            trigger:elem,
-            onEnter: function(){changeText(title, text)},
-            onLeaveBack: function(){changeText("Special Collaboration", "A fusion of Characteristic, style and taste from other brand local and international")}
-        })
-      })
+
+      ScrollTrigger.create({
+        trigger: collabPic2,
+        start:"top 30%",
+        end: () => "+=" + collabPic2.offsetWidth,
+        onEnter: function(){changeTextCollaboration("Lumberjack", "We did Collaboration with Lumberjack")},
+        onLeaveBack: function(){changeTextCollaboration("Seremoni", "We did Collaboration with Seremoni")}
+      });
+      ScrollTrigger.create({
+        trigger: collabPic3,
+        start:"top 30%",
+        end: () => "+=" + collabPic3.offsetWidth,
+        onEnter: function(){changeTextCollaboration("Kopi Kayon", "We did Collaboration with Kopi Kayon. It was a fun experience that brings a lot of new lesson")},
+        onLeaveBack: function(){changeTextCollaboration("Lumberjack", "We did Collaboration with Lumberjack")},
+      });
+});
+
+mm.add("(min-width: 42rem)", () => {
+
+/* NAVIGATION-DESKTOP*/
+
+  const showAnim = gsap.from(".primary-navigation", { 
+    yPercent: -170,
+    paused: true,
+    duration: 0.2
+  }).progress(1);
+
+  ScrollTrigger.create({ 
+    start: "top top",
+    end: 99999,
+    onUpdate: (self) => {
+      self.direction === -1 ? showAnim.play() : showAnim.reverse()
     }
-    collaborationPic("seremoni", "we did collaboration with seremoni");
-    collaborationPic("lumberjack", "we did collaboration with lumberjack");
+  });
+
+/* COLLABORATION-ANIMATION-DESKTOP*/
+  let collabPics = document.querySelectorAll(".collaboration-pic");
+  gsap.set(collabPics, {autoAlpha:0, yPercent:100});
+  gsap.to (collabPics, {
+    yPercent: 0,
+    ease:"ease",
+    stagger: 0.4,
+    autoAlpha:1,
+    scrollTrigger: {
+      trigger: "#collaboration-subtitle",
+    start:"top center",
+    end: "+=500vh top",
+    toggleActions: "restart reverse play reverse",
+    }
+  });
 });
 
 
