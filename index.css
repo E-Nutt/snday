@@ -115,8 +115,6 @@ select, input, textarea, button{font: inherit;}
     }
 }
 
-
-
 /*----------------------------*/
 /*       UTILITY-CLASS        */
 /*----------------------------*/
@@ -205,7 +203,6 @@ select, input, textarea, button{font: inherit;}
     text-align: justify;
 }
 
-
 /* SPACING */
 
 .flow-ver > *:not(:first-child) {
@@ -241,10 +238,14 @@ select, input, textarea, button{font: inherit;}
     }
 }
 
-
+/*----------------------------*/
+/*----------------------------*/
+/*           INDEX            */
+/*----------------------------*/
+/*----------------------------*/
 
 /*----------------------------*/
-/*       COMPONENTS       */
+/*         COMPONENTS         */
 /*----------------------------*/
 
 /*       NAVIGATION       */
@@ -553,5 +554,64 @@ select, input, textarea, button{font: inherit;}
     }
     .barista-career-card > a{
         align-self: last baseline;
+    }
+}
+
+/*----------------------------*/
+/*----------------------------*/
+/*           MENU             */
+/*----------------------------*/
+/*----------------------------*/
+
+/*----------------------------*/
+/*         COMPONENTS         */
+/*----------------------------*/
+
+/*       LANDING PAGE       */
+
+.menu-landing-page-background{
+    width: 100%;
+    height: 20rem;
+    background-image: url(assets/84520.jpg);
+    background-position: -1rem center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+@media (min-width: 41.8rem){
+    .menu-landing-page-background{
+    background-position: 6rem center;
+}
+}
+.menu-landing-page-title > :nth-child(2){
+    max-width: 100%;
+}
+
+/*       OUR MENU ACCORDION       */
+.menu-accordion-title{
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+    user-select: none;
+    cursor: pointer;
+    padding-left: .5rem;
+}
+.menu-accordion-content{
+    justify-content: space-between;
+    height: 0;
+    overflow: hidden;
+}
+
+@media (min-width: 41.8rem){
+    .menu-1 > *:not(:nth-child(1),:nth-child(4)):nth-child(even){
+        margin-left: 50%;
+    }
+    .menu-accordion-container{
+        max-width: 50%;
+    }
+    .menu-accordion-content{
+        height: auto
+    }
+    .menu-accordion-title{
+        box-shadow: none;
+        padding-left:0;
     }
 }
