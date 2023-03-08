@@ -216,7 +216,6 @@ mm.add("(min-width: 42rem)", () => {
         trigger: ".collaboration-pic-container",
         start: "top center",
         bottom: "bottom bottom",
-        markers:true,
         toggleActions: "restart reverse play reverse"
      }
   })
