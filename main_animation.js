@@ -153,6 +153,7 @@ mm.add("(max-width: 41.9rem)", () => {
         end: "+=1300px",
         pin: ".collaboration-title",
       }); 
+
       const collabPic1 = document.querySelector("#collab-pic1");
       const collabPic2 = document.querySelector("#collab-pic2");
       const collabPic3 = document.querySelector("#collab-pic3");
@@ -179,6 +180,9 @@ mm.add("(max-width: 41.9rem)", () => {
         onEnter: function(){changeTextCollaboration("Kopi Kayon", "We did Collaboration with Kopi Kayon. It was a fun experience that brings a lot of new lesson")},
         onLeaveBack: function(){changeTextCollaboration("Lumberjack", "We did Collaboration with Lumberjack")},
       });
+      return() => {
+        resetTextCollaboration();
+      }
 });
 
 mm.add("(min-width: 42rem)", () => {
@@ -200,20 +204,25 @@ mm.add("(min-width: 42rem)", () => {
   });
 
 /* COLLABORATION-ANIMATION-DESKTOP*/
+
   let collabPics = document.querySelectorAll(".collaboration-pic");
-  gsap.set(collabPics, {autoAlpha:0, yPercent:100});
-  gsap.to (collabPics, {
-    yPercent: 0,
-    ease:"ease",
-    stagger: 0.4,
-    autoAlpha:1,
+
+  gsap.from(collabPics, {
+    autoAlpha:0,
+    yPercent:100,
+    stagger:0.2,
+    ease:"power1.inOut",
     scrollTrigger: {
-      trigger: "#collaboration-subtitle",
-    start:"top center",
-    end: "+=500vh top",
-    toggleActions: "restart reverse play reverse",
-    }
-  });
+        trigger: ".collaboration-pic-container",
+        start: "top center",
+        bottom: "bottom bottom",
+        markers:true,
+        toggleActions: "restart reverse play reverse"
+     }
+  })
+  return() =>{
+    gsap.set (collabPics, {autoAlpha:1, yPercent:0})
+  }
 });
 
 
